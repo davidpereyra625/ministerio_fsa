@@ -1,4 +1,9 @@
 <x-guest-layout>
+    <!-- agregamos este link para registrarse -->
+    <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
+        <a href="{{route('register')}}" class="ml-4 text-sm text-gray-700 underline">Registrar</a>
+
+    </div>
     <x-authentication-card>
         <x-slot name="logo">
             <x-authentication-card-logo />
@@ -7,9 +12,9 @@
         <x-validation-errors class="mb-4" />
 
         @if (session('status'))
-            <div class="mb-4 font-medium text-sm text-green-600">
-                {{ session('status') }}
-            </div>
+        <div class="mb-4 font-medium text-sm text-green-600">
+            {{ session('status') }}
+        </div>
         @endif
 
         <form method="POST" action="{{ route('login') }}">
@@ -34,9 +39,9 @@
 
             <div class="flex items-center justify-end mt-4">
                 @if (Route::has('password.request'))
-                    <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                        {{ __('Forgot your password?') }}
-                    </a>
+                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
+                    {{ __('Forgot your password?') }}
+                </a>
                 @endif
 
                 <x-button class="ml-4">

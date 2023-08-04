@@ -20,3 +20,10 @@ Route::middleware([
         return view('dash.index');
     })->name('dash');
 });
+
+Route::get('/dash/crud', function () {
+    return view('crud.index');
+});
+Route::get('/dash/crud/create', function () {
+    return view('crud.create');
+});
