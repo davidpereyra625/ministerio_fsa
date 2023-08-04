@@ -12,7 +12,9 @@ class PersonaController extends Controller
      */
     public function index()
     {
-        //
+        // haciendo referencia al modelo persona con Persona::
+        $datos = Persona::all();
+        echo $datos;
     }
 
     /**
