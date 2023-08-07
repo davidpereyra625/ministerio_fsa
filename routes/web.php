@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\InicioController;
+use App\Http\Controllers\InvertarioController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\View;
 
@@ -9,6 +10,8 @@ use Illuminate\Support\Facades\View;
 Route::get('/', function () {
     return view('auth.login');
 });
+
+Route::resource('invertario', 'App\Http\Controllers\InvertarioController');
 
 
 Route::middleware([

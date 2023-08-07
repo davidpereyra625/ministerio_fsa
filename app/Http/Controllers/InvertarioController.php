@@ -12,7 +12,8 @@ class InvertarioController extends Controller
      */
     public function index()
     {
-        //
+        $inventario = Invertario::all(); //nos trae todos los datos de la tabla inventario
+        return view('inventario.index')->with('inventario', $inventario);
     }
 
     /**
