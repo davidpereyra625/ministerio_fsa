@@ -12,8 +12,8 @@ class InvertarioController extends Controller
      */
     public function index()
     {
-        $inventario = Invertario::all(); //nos trae todos los datos de la tabla inventario
-        return view('inventario.index')->with('inventario', $inventario);
+        $inventarios = Invertario::all(); //nos trae todos los datos de la tabla inventario
+        return view('inventario.index')->with('inventarios', $inventarios);
     }
 
     /**
@@ -21,7 +21,8 @@ class InvertarioController extends Controller
      */
     public function create()
     {
-        //
+        // para crear y obtener los datos tenemos que ir al store, no te olvides
+        return view('inventario.create');
     }
 
     /**
@@ -30,6 +31,16 @@ class InvertarioController extends Controller
     public function store(Request $request)
     {
         //
+        $inventarios = new Invertario();
+
+        $inventarios->codigo = $request->get('codigo');
+        $inventarios->descripcion = $request->get('descripcion');
+        $inventarios->cantidad = $request->get('cantidad');
+        $inventarios->precio = $request->get('precio');
+
+        $inventarios->save();
+
+        return redirect('/invertario');
     }
 
     /**
@@ -43,17 +54,30 @@ class InvertarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Invertario $invertario)
+    public function edit($id)
     {
-        //
+
+        //aca necesitamos traer solo 1 y despues tenemos que ir al metodo update para actualizar los cambios
+        $hola = Invertario::find($id);
+        return view('inventario.edit')->with('hola', $hola);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Invertario $invertario)
+    public function update(Request $request, $id)
     {
-        //
+
+        $holas = Invertario::find($id);
+
+        $holas->codigo = $request->get('codigo');
+        $holas->descripcion = $request->get('descripcion');
+        $holas->cantidad = $request->get('cantidad');
+        $holas->precio = $request->get('precio');
+
+        $holas->save();
+
+        return redirect('/invertario');
     }
 
     /**
